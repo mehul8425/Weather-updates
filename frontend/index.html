@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Global Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <h1>Global Dashboard</h1>
+  <div>
+    <h2>Weather</h2>
+    <p id="weather"></p>
+  </div>
+  <div>
+    <h2>Top News</h2>
+    <ul id="news"></ul>
+  </div>
+
+  <script>
+    fetch('http://localhost:3001/api/data?city=Toronto')
+      .then(res => res.json())
+      .then(data => {
+        const weather = data.weather;
+        document.getElementById('weather').innerText = 
+          `Temperature: ${weather.main.temp} °C, ${weather.weather[0].description}`;
+
+        const newsList = document.getElementById('news');
+        data.news.forEach(article => {
+          const li = document.createElement('li');
+          li.innerText = article.title;
+          newsList.appendChild(li);
+        });
+      });
+  </script>
+</body>
+</html>
