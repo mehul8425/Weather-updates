@@ -104,7 +104,7 @@ Follow these steps to start the application:
         "title": "Breaking News Headline 1",
         "url": "https://example.com/article1"
       },
-      ...
+      
     ]
   }
 
